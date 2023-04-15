@@ -6,13 +6,23 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MovieFilterComponent } from './movie-filter/movie-filter.component';
+import { MoviesPageComponent } from './movies-page/movies-page.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { StarComponent } from './star/star.component';
+import { StarsComponent } from './stars/stars.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomePageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MovieFilterComponent,
+    MoviesPageComponent,
+    MovieCardComponent,
+    StarComponent,
+    StarsComponent
   ],
   imports: [
     BrowserModule,

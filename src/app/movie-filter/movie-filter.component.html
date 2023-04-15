@@ -1,0 +1,58 @@
+<div class="container rounded-3 shadow-lg border border-dark-subtle pt-2" id="movie-filter-container">
+  <div class="row">
+    <div class="col-12">
+      <div class="mb-2">
+        <input type="text" class="form-control" placeholder="Search for a movie" />
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="mb-2">
+        <select class="form-select">
+          <option selected value="0">Select one genre</option>
+          <option value="1">Genre 1</option>
+          <option value="2">Genre 2</option>
+          <option value="3">Genre 3</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="mb-2">
+        <div class="radio-buttons-container p-2 border border-dark-subtle rounded-3">
+          <p>Choose the movie's rating</p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="rating" value="8" />
+            <label class="form-check-label" for="flexRadioDefault1">
+              <app-stars [rating]="8" />
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="rating" value="6" />
+            <label class="form-check-label" for="flexRadioDefault1">
+              <app-stars [rating]="6" />
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="rating" value="4" />
+            <label class="form-check-label" for="flexRadioDefault1">
+              <app-stars [rating]="4" />
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="rating" value="2" />
+            <label class="form-check-label" for="flexRadioDefault1">
+              <app-stars [rating]="2" />
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="rating" value="0" />
+            <label class="form-check-label" for="flexRadioDefault1">
+              <app-stars [rating]="0" />
+            </label>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
