@@ -19,6 +19,10 @@ import { AdminMoviesPageComponent } from './admin-movies-page/admin-movies-page.
 import { MovieFormComponent } from './movie-form/movie-form.component';
 import { InsertMoviePageComponent } from './insert-movie-page/insert-movie-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { GenreFormComponent } from './genre-form/genre-form.component';
+import { GenreCardComponent } from './genre-card/genre-card.component';
+import { GenresPageComponent } from './genres-page/genres-page.component';
+import { InsertGenrePageComponent } from './insert-genre-page/insert-genre-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { FooterComponent } from './footer/footer.component';
     AdminMoviesPageComponent,
     MovieFormComponent,
     InsertMoviePageComponent,
-    FooterComponent
+    FooterComponent,
+    GenreFormComponent,
+    GenreCardComponent,
+    GenresPageComponent,
+    InsertGenrePageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+<div class="container p-3">
+  <h1>Genres</h1>
+  <div class="mb-3">
+    <a routerLink="insert" class="btn btn-primary">Add new Genre</a>
+  </div>
+  <div *ngIf="genres" class="g-3 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+    <div *ngFor="let genre of genres" class="col">
+      <app-genre-card [genre]="genre" />
+    </div>
+  </div>
+</div>

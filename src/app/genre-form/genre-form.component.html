@@ -1,0 +1,47 @@
+<div class="container">
+  <form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="col-12">
+      <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Action"
+          id="name"
+          formControlName="name"
+          [ngClass]="{
+            'is-valid': fieldIsValid('name'),
+            'is-invalid': fieldIsInvalid('name')
+          }"
+        />
+        <div *ngIf="fieldIsInvalid('name')">
+          <div class="invalid-feedback d-block" >
+            Genre's name is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="image-url">Image URL</label>
+        <input
+          type="text"
+          class="form-control"
+          id="image-url"
+          placeholder="https://some-image.png"
+          formControlName="imageUrl"
+          [ngClass]="{
+            'is-valid': fieldIsValid('imageUrl'),
+            'is-invalid': fieldIsInvalid('imageUrl')
+          }"
+        />
+        <div *ngIf="fieldIsInvalid('imageUrl')">
+          <div class="invalid-feedback d-block" >
+            Must be a valid link
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </form>
+</div>
