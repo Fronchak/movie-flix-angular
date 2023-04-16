@@ -1,0 +1,29 @@
+#admin-navbar {
+  border-bottom: 1px solid #CCC;
+}
+
+#admin-navbar .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  gap: 1em;
+}
+
+#admin-navbar a {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  background-color: #3E8BE4;
+  flex: 1;
+  text-align: center;
+  border-radius: 100px;
+  transition: 0.5s;
+}
+
+#admin-navbar a:hover {
+  background-color: #2770C2;
+}
