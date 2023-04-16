@@ -25,6 +25,9 @@ import { GenresPageComponent } from './genres-page/genres-page.component';
 import { InsertGenrePageComponent } from './insert-genre-page/insert-genre-page.component';
 import { UpdateGenrePageComponent } from './update-genre-page/update-genre-page.component';
 import { UpdateMoviePageComponent } from './update-movie-page/update-movie-page.component';
+import { MovieDetailsPageComponent } from './movie-details-page/movie-details-page.component';
+import { GenreBannerComponent } from './genre-banner/genre-banner.component';
+import { GenresBannerContainerComponent } from './genres-banner-container/genres-banner-container.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { UpdateMoviePageComponent } from './update-movie-page/update-movie-page.
     GenresPageComponent,
     InsertGenrePageComponent,
     UpdateGenrePageComponent,
-    UpdateMoviePageComponent
+    UpdateMoviePageComponent,
+    MovieDetailsPageComponent,
+    GenreBannerComponent,
+    GenresBannerContainerComponent
   ],
   imports: [
     BrowserModule,
