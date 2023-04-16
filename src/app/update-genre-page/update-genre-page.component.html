@@ -1,0 +1,9 @@
+<div class="container p-3">
+  <h1>Update genre</h1>
+  <div *ngIf="genre; else loadingBlock">
+    <app-genre-form [defaultValues]="genre" (submitForm)="handleSubmit($event)" />
+  </div>
+  <ng-template #loadingBlock>
+    <p>Loading...</p>
+  </ng-template>
+</div>

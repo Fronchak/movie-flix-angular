@@ -23,6 +23,7 @@ import { GenreFormComponent } from './genre-form/genre-form.component';
 import { GenreCardComponent } from './genre-card/genre-card.component';
 import { GenresPageComponent } from './genres-page/genres-page.component';
 import { InsertGenrePageComponent } from './insert-genre-page/insert-genre-page.component';
+import { UpdateGenrePageComponent } from './update-genre-page/update-genre-page.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { InsertGenrePageComponent } from './insert-genre-page/insert-genre-page.
     GenreFormComponent,
     GenreCardComponent,
     GenresPageComponent,
-    InsertGenrePageComponent
+    InsertGenrePageComponent,
+    UpdateGenrePageComponent
   ],
   imports: [
     BrowserModule,

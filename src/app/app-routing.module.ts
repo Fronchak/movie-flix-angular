@@ -8,6 +8,7 @@ import { AdminMoviesPageComponent } from './admin-movies-page/admin-movies-page.
 import { InsertMoviePageComponent } from './insert-movie-page/insert-movie-page.component';
 import { GenresPageComponent } from './genres-page/genres-page.component';
 import { InsertGenrePageComponent } from './insert-genre-page/insert-genre-page.component';
+import { UpdateGenrePageComponent } from './update-genre-page/update-genre-page.component';
 
 const routes: Routes = [
   { path: "", component: HomePageComponent, pathMatch:"full" },
@@ -16,7 +17,8 @@ const routes: Routes = [
       { path: "movies", component: AdminMoviesPageComponent },
       { path: "movies/insert", component: InsertMoviePageComponent },
       { path: "genres", component: GenresPageComponent },
-      { path: "genres/insert", component: InsertGenrePageComponent }
+      { path: "genres/insert", component: InsertGenrePageComponent },
+      { path: "genres/update/:id", component: UpdateGenrePageComponent }
   ]},
   { path: "**", component: PageNotFoundComponent }
 ];

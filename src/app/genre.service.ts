@@ -20,4 +20,12 @@ export class GenreService {
   findAll() {
     return this.http.get<Array<GenreType>>(this.URL);
   }
+
+  findById(id: number) {
+    return this.http.get<GenreType>(`${this.URL}/${id}`);
+  }
+
+  update(genreForm: GenreFormType, id: number) {
+    return this.http.put<GenreType>(`${this.URL}/${id}`, genreForm);
+  }
 }
