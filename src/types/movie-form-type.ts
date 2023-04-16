@@ -3,7 +3,7 @@ type MovieFormType = {
   synopsis: string;
   launchYear: number;
   rating: number;
-  imageUrl: number;
+  imageUrl: string;
   idGenres: Array<number>
 }
 

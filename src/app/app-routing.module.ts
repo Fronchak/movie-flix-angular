@@ -9,13 +9,16 @@ import { InsertMoviePageComponent } from './insert-movie-page/insert-movie-page.
 import { GenresPageComponent } from './genres-page/genres-page.component';
 import { InsertGenrePageComponent } from './insert-genre-page/insert-genre-page.component';
 import { UpdateGenrePageComponent } from './update-genre-page/update-genre-page.component';
+import { UpdateMoviePageComponent } from './update-movie-page/update-movie-page.component';
 
 const routes: Routes = [
   { path: "", component: HomePageComponent, pathMatch:"full" },
   { path: "movies", component: MoviesPageComponent },
   { path: "admin", component: AdminPageComponent, children: [
+      { path: "", redirectTo: "movies", pathMatch: "full" },
       { path: "movies", component: AdminMoviesPageComponent },
       { path: "movies/insert", component: InsertMoviePageComponent },
+      { path: "movies/update/:id", component: UpdateMoviePageComponent },
       { path: "genres", component: GenresPageComponent },
       { path: "genres/insert", component: InsertGenrePageComponent },
       { path: "genres/update/:id", component: UpdateGenrePageComponent }

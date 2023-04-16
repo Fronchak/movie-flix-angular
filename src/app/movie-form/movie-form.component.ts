@@ -1,19 +1,35 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit } from '@angular/core';
 import { AbstractControl, Validators, FormGroup, FormControl } from '@angular/forms';
+import GenreType from 'src/types/genre-type';
 import MovieFormType from 'src/types/movie-form-type';
 import MovieType from 'src/types/movie-type';
 import { notBlankValidator } from 'src/utils/custom-validators';
 import InputFieldUtil from 'src/utils/input-field-util';
+import { GenreService } from '../genre.service';
 
 @Component({
   selector: 'app-movie-form',
   templateUrl: './movie-form.component.html',
   styleUrls: ['./movie-form.component.css']
 })
-export class MovieFormComponent implements OnChanges {
+export class MovieFormComponent implements OnInit, OnChanges {
 
   @Input() defaultValues: MovieType | undefined;
   @Output() submitForm = new EventEmitter<MovieFormType>
+  genres: Array<GenreType> | undefined;
+  wasSubmited: boolean = false;
+
+  constructor(private genreService: GenreService) {}
+
+  ngOnInit(): void {
+    this.genreService.findAll().subscribe({
+      next: (genres) => {
+        console.log(genres);
+        this.genres = genres
+      },
+      error: (err) => console.error(err)
+    })
+  }
 
   ngOnChanges(): void {
     console.log('call ngOnChanges');
@@ -44,7 +60,7 @@ export class MovieFormComponent implements OnChanges {
     ),
     imageUrl: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.pattern('(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)'), Validators.required]
+      validators: [Validators.pattern('(http(s?):)(\.)*'), Validators.required]
     }),
     genres: new FormControl<Array<number>>([], {
       nonNullable: true,
@@ -59,15 +75,24 @@ export class MovieFormComponent implements OnChanges {
 
   fieldIsInvalid(fieldName: string) {
     const field = this.form.get(fieldName) as AbstractControl;
-    return InputFieldUtil.isInvalid(field);
+    return InputFieldUtil.isInvalid(field) || (field.invalid && this.wasSubmited);
   }
 
   onSubmit() {
+    this.wasSubmited = true;
+    const values = this.form.value;
     console.log(this.form.value)
     console.log(this.form.status);
     if(this.form.status === 'VALID') {
-      const idGenres = [1, 2]
-      this.submitForm.emit({ ...this.form.value, idGenres } as unknown as MovieFormType);
+      const data: MovieFormType = {
+        title: values.title!,
+        synopsis: values.synopsis!,
+        launchYear: values.launchYear!,
+        rating: values.rating!,
+        imageUrl: values.imageUrl!,
+        idGenres: values.genres!
+      }
+      this.submitForm.emit(data);
     }
   }
 }

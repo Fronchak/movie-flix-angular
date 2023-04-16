@@ -8,15 +8,10 @@
     </div>
     <div class="col-12 col-xl-9">
       <h1 class="mt-2 mt-xl-0">Movies</h1>
-      <div class="mt-1 g-3 row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4">
-        <app-admin-movie-card />
-        <app-admin-movie-card />
-        <app-admin-movie-card />
-        <app-admin-movie-card />
-        <app-admin-movie-card />
-        <app-admin-movie-card />
-        <app-admin-movie-card />
-        <app-admin-movie-card />
+      <div *ngIf="page" class="mt-1 g-3 row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4">
+        <div class="col" *ngFor="let movie of page.content">
+          <app-admin-movie-card [movie]="movie" />
+        </div>
       </div>
     </div>
   </div>
