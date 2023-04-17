@@ -28,4 +28,8 @@ export class GenreService {
   update(genreForm: GenreFormType, id: number) {
     return this.http.put<GenreType>(`${this.URL}/${id}`, genreForm);
   }
+
+  delete(id: number) {
+    return this.http.delete<void>(`${this.URL}/${id}`);
+  }
 }

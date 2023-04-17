@@ -1,7 +1,7 @@
 <div class="container p-3">
   <h1>Update Movie</h1>
   <div *ngIf="movie; else loadingBlock" >
-    <app-movie-form [defaultValues]="movie" (submitForm)="handleSubmit($event)" />
+    <app-movie-form [defaultValues]="movie" [serverErrors]="serverErrors" (submitForm)="handleSubmit($event)" />
   </div>
   <ng-template #loadingBlock>
     <p>Loading...</p>

@@ -20,8 +20,8 @@ const routes: Routes = [
   { path: "admin", component: AdminPageComponent, children: [
       { path: "", redirectTo: "movies", pathMatch: "full" },
       { path: "movies", component: AdminMoviesPageComponent },
-      { path: "movies/:id", component: AdminMovieDetailsPageComponent },
       { path: "movies/insert", component: InsertMoviePageComponent },
+      { path: "movies/:id", component: AdminMovieDetailsPageComponent },
       { path: "movies/update/:id", component: UpdateMoviePageComponent },
       { path: "genres", component: GenresPageComponent },
       { path: "genres/insert", component: InsertGenrePageComponent },

@@ -1,7 +1,7 @@
 import GenreType from "./genre-type";
 
 type MovieType = {
-  id: number | null;
+  id: number;
   title: string;
   synopsis: string;
   launchYear: number;

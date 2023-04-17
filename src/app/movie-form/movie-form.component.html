@@ -17,7 +17,7 @@
           />
           <div *ngIf="fieldIsInvalid('title')">
             <div class="invalid-feedback d-block">
-              Title is required
+              {{ getServerError('title') || "Title is required" }}
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
               />
               <div *ngIf="fieldIsInvalid('launchYear')">
                 <div class="invalid-feedback d-block">
-                  Launch year should be beeteen 1900 and 2024
+                  {{ getServerError('launchYear') || "Launch year should be beeteen 1900 and 2024" }}
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@
               />
               <div *ngIf="fieldIsInvalid('rating')">
                 <div class="invalid-feedback d-block">
-                  Rating should be beeteen 0 and 10
+                  {{ getServerError('rating') || "Rating should be beeteen 0 and 10" }}
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@
           />
           <div *ngIf="fieldIsInvalid('imageUrl')">
             <div class="invalid-feedback d-block">
-              Must be a valid link
+              {{ getServerError('imageUrl') || "Must be a valid link" }}
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
           </select>
           <div *ngIf="fieldIsInvalid('genres')">
             <div class="invalid-feedback d-block">
-              Movie should have at least one genre
+              {{ getServerError('genres') || "Movie should have at least one genre" }}
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@
           ></textarea>
           <div *ngIf="fieldIsInvalid('synopsis')">
             <div class="invalid-feedback d-block">
-              Synopsis is required
+              {{ getServerError('synopsis') || "Synopsis is required" }}
             </div>
           </div>
         </div>
@@ -132,5 +132,4 @@
       </div>
     </form>
   </div>
-
 </div>

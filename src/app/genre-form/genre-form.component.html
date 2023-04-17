@@ -16,7 +16,7 @@
         />
         <div *ngIf="fieldIsInvalid('name')">
           <div class="invalid-feedback d-block" >
-            Genre's name is required
+            {{ getServerError('name') || "Genre's name is required" }}
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
         />
         <div *ngIf="fieldIsInvalid('imageUrl')">
           <div class="invalid-feedback d-block" >
-            Must be a valid link
+            {{ getServerError('name') || "Must be a valid link" }}
           </div>
         </div>
       </div>

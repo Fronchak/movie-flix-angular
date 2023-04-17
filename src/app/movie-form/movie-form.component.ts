@@ -6,6 +6,7 @@ import MovieType from 'src/types/movie-type';
 import { notBlankValidator } from 'src/utils/custom-validators';
 import InputFieldUtil from 'src/utils/input-field-util';
 import { GenreService } from '../genre.service';
+import FieldErrorType from 'src/types/field-error-type';
 
 @Component({
   selector: 'app-movie-form',
@@ -14,7 +15,8 @@ import { GenreService } from '../genre.service';
 })
 export class MovieFormComponent implements OnInit, OnChanges {
 
-  @Input() defaultValues: MovieType | undefined;
+  @Input() defaultValues: MovieFormType | undefined;
+  @Input() serverErrors: Array<FieldErrorType> = [];
   @Output() submitForm = new EventEmitter<MovieFormType>
   genres: Array<GenreType> | undefined;
   wasSubmited: boolean = false;
@@ -39,7 +41,7 @@ export class MovieFormComponent implements OnInit, OnChanges {
       launchYear: this.defaultValues?.launchYear,
       rating: this.defaultValues?.rating,
       imageUrl: this.defaultValues?.imageUrl,
-      genres: this.defaultValues?.genres ? this.defaultValues.genres.map((genre) => genre.id || 0) : []
+      genres: this.defaultValues?.idGenres
     })
   }
 
@@ -70,12 +72,16 @@ export class MovieFormComponent implements OnInit, OnChanges {
 
   fieldIsValid(fieldName: string) {
     const field = this.form.get(fieldName) as AbstractControl;
-    return InputFieldUtil.isValid(field);
+    return InputFieldUtil.isValid(field) && !this.getServerError(fieldName);
   }
 
   fieldIsInvalid(fieldName: string) {
     const field = this.form.get(fieldName) as AbstractControl;
-    return InputFieldUtil.isInvalid(field) || (field.invalid && this.wasSubmited);
+    return InputFieldUtil.isInvalid(field) || (field.invalid && this.wasSubmited) || this.getServerError(fieldName);
+  }
+
+  getServerError(fieldName: string): string | undefined {
+    return this.serverErrors.find((fieldError) => fieldError.fieldName === fieldName)?.message;
   }
 
   onSubmit() {

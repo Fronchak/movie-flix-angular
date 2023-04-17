@@ -1,5 +1,5 @@
 type GenreType = {
-  id: number | null;
+  id: number;
   name: string;
   imageUrl: string;
 }

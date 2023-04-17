@@ -1,7 +1,7 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import FieldErrorType from 'src/types/field-error-type';
 import GenreFormType from 'src/types/genre-form-type';
-import GenreType from 'src/types/genre-type';
 import { notBlankValidator } from 'src/utils/custom-validators';
 import InputFieldUtil from 'src/utils/input-field-util';
 
@@ -21,7 +21,8 @@ export class GenreFormComponent implements OnChanges {
     });
   }
 
-  @Input() defaultValues: GenreType | undefined;
+  @Input() serverErrors: Array<FieldErrorType> = [];
+  @Input() defaultValues: GenreFormType | undefined;
   @Output() submitForm = new EventEmitter<GenreFormType>
 
   form = new FormGroup({
@@ -37,18 +38,20 @@ export class GenreFormComponent implements OnChanges {
 
   fieldIsValid(fieldName: string) {
     const field = this.form.get(fieldName) as AbstractControl;
-    return InputFieldUtil.isValid(field);
+    return InputFieldUtil.isValid(field) && !this.getServerError(fieldName);
   }
 
   fieldIsInvalid(fieldName: string) {
     const field = this.form.get(fieldName) as AbstractControl;
-    return InputFieldUtil.isInvalid(field) || (field.invalid && this.wasSubmited);
+    return InputFieldUtil.isInvalid(field) || (field.invalid && this.wasSubmited) || this.getServerError(fieldName);
+  }
+
+  getServerError(fieldName: string): string | undefined {
+    return this.serverErrors.find((fieldError) => fieldError.fieldName === fieldName)?.message;
   }
 
   onSubmit() {
     this.wasSubmited = true
-    console.log(this.form.value)
-    console.log(this.form.status);
     if(this.form.status === 'VALID') {
       this.submitForm.emit(this.form.value as GenreFormType);
     }

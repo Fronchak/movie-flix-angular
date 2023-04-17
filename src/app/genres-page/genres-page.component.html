@@ -5,7 +5,7 @@
   </div>
   <div *ngIf="genres" class="g-3 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
     <div *ngFor="let genre of genres" class="col">
-      <app-genre-card [genre]="genre" />
+      <app-genre-card [genre]="genre" (onDelete)="handleDelete($event)" />
     </div>
   </div>
 </div>
