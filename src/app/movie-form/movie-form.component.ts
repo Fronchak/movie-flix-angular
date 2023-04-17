@@ -60,7 +60,7 @@ export class MovieFormComponent implements OnInit, OnChanges {
     ),
     imageUrl: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.pattern('(http(s?):)(\.)*'), Validators.required]
+      validators: notBlankValidator()//[Validators.pattern('(http(s?):)(\.)*'), Validators.required]
     }),
     genres: new FormControl<Array<number>>([], {
       nonNullable: true,

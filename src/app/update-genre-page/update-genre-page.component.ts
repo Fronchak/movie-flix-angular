@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GenreService } from '../genre.service';
 import GenreType from 'src/types/genre-type';
 import GenreFormType from 'src/types/genre-form-type';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-genre-page',
@@ -16,7 +17,8 @@ export class UpdateGenrePageComponent implements OnInit {
 
   constructor(private genreService: GenreService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class UpdateGenrePageComponent implements OnInit {
       next: (genre) => {
         console.log(genre);
         this.router.navigate(["/admin/genres"]);
+        this.toastr.success('Genre updated with sucess', "Movie Flix")
       },
       error: (err) => console.error(err)
     })

@@ -1,21 +1,7 @@
-<div class="container p-3">
-  <div *ngIf="movie; else loadingBlock" class="row">
-    <div class="col-12 col-md-6">
-      <img [src]="movie.imageUrl" class="img-fluid w-100" [alt]="movie.title" />
-    </div>
-    <div class="col-12 col-md-6 p-3">
-      <h1>{{ movie.title }}</h1>
-      <h4>Rating: <app-stars [rating]="movie.rating" /></h4>
-      <h4>Launch Year: {{ movie.launchYear }}</h4>
-    </div>
-    <div class="col-12">
-      <app-genres-banner-container [genres]="movie.genres" />
-    </div>
-    <div class="col-12 p-3">
-      {{ movie.synopsis }}
-    </div>
-  </div>
-  <ng-template #loadingBlock>
-    <p>Loading...</p>
-  </ng-template>
+<div *ngIf="movie; else loadingBlock">
+  <app-movie-details [movie]="movie" />
 </div>
+<ng-template #loadingBlock>
+  <p>Loading...</p>
+</ng-template>
+

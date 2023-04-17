@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +30,8 @@ import { UpdateMoviePageComponent } from './update-movie-page/update-movie-page.
 import { MovieDetailsPageComponent } from './movie-details-page/movie-details-page.component';
 import { GenreBannerComponent } from './genre-banner/genre-banner.component';
 import { GenresBannerContainerComponent } from './genres-banner-container/genres-banner-container.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { AdminMovieDetailsPageComponent } from './admin-movie-details-page/admin-movie-details-page.component';
 
 @NgModule({
   declarations: [
@@ -54,13 +58,20 @@ import { GenresBannerContainerComponent } from './genres-banner-container/genres
     UpdateMoviePageComponent,
     MovieDetailsPageComponent,
     GenreBannerComponent,
-    GenresBannerContainerComponent
+    GenresBannerContainerComponent,
+    MovieDetailsComponent,
+    AdminMovieDetailsPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      timeOut: 3000
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

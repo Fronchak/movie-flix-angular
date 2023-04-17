@@ -1,0 +1,10 @@
+<div *ngIf="movie; else loadingBlock">
+  <app-movie-details [movie]="movie" />
+  <div class="mb-3 container" id="buttons-container">
+    <a routerLink="/admin/movies/update/{{ movie.id }}" class="btn btn-primary">Edit</a>
+    <a routerLink="/admin/movies/delete/{{ movie.id }}" class="btn btn-danger">Delete</a>
+  </div>
+</div>
+<ng-template #loadingBlock>
+  <p>Loading...</p>
+</ng-template>

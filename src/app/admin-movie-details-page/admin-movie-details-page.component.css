@@ -1,0 +1,9 @@
+#buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+}
+
+#buttons-container .btn {
+  min-width: 100px;
+}
