@@ -6,7 +6,11 @@
     <div class="col-12 col-xl-9">
       <h1 class="mt-2 mt-xl-0">Movies</h1>
       <div *ngIf="!isLoading && page; else loading" class="mt-1 g-3 row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4">
-        <div *ngFor="let movie of page.content" class="col">
+        <div *ngFor="let movie of page.content | paginate: {
+          id: 'some_id',
+          itemsPerPage: 2,
+          currentPage: page.number + 1,
+          totalItems: page.totalElements }" class="col">
           <app-movie-card [movie]="movie" />
         </div>
       </div>
@@ -38,6 +42,17 @@
           </div>
         </div>
       </ng-template>
+      <div class="text-center p-3">
+        <pagination-controls id="some_id"
+        (pageChange)="pageChanged($event)"
+        previousLabel="Previous"
+        nextLabel="Next"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        screenReaderCurrentLabel="You're on page">
+</pagination-controls>
+      </div>
+
     </div>
   </div>
 

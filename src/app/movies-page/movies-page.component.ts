@@ -13,6 +13,13 @@ export class MoviesPageComponent implements OnInit {
 
   page: SpringPageType<MovieCardType> | undefined;
   isLoading: boolean = false;
+  movieFilter: MovieFilterType = {
+    title: '',
+    idGenre: 0,
+    rating: 0
+  }
+
+  collection: Array<number> = [1, 2, 3, 4, 5, 6];
 
   constructor(private movieService: MovieService) {}
 
@@ -29,7 +36,19 @@ export class MoviesPageComponent implements OnInit {
 
   handleFilter(filter: MovieFilterType) {
     this.isLoading = true;
+    this.movieFilter = filter;
     this.movieService.findAll(filter).subscribe({
+      next: (page) => {
+        this.isLoading = false;
+        this.page = page;
+      },
+      error: (err) => console.error(err)
+    })
+  }
+
+  pageChanged(page: number) {
+    this.isLoading = true;
+    this.movieService.findAll(this.movieFilter, page - 1).subscribe({
       next: (page) => {
         this.isLoading = false;
         this.page = page;

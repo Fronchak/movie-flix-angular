@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -74,6 +75,7 @@ import { AdminMovieCardLoaderComponent } from './admin-movie-card-loader/admin-m
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxPaginationModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       timeOut: 3000
