@@ -2,16 +2,14 @@
   <div class="row">
     <div class="col-12">
       <div class="mb-2">
-        <input type="text" class="form-control" placeholder="Search for a movie" />
+        <input type="text" (keyup)="onClick()" [(ngModel)]="title" class="form-control" placeholder="Search for a movie" />
       </div>
     </div>
     <div class="col-12">
       <div class="mb-2">
-        <select class="form-select">
+        <select class="form-select" (change)="onChange()" [(ngModel)]="idGenre">
           <option selected value="0">Select one genre</option>
-          <option value="1">Genre 1</option>
-          <option value="2">Genre 2</option>
-          <option value="3">Genre 3</option>
+          <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
         </select>
       </div>
     </div>
@@ -20,32 +18,32 @@
         <div class="radio-buttons-container p-2 border border-dark-subtle rounded-3">
           <p>Choose the movie's rating</p>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="rating" value="8" />
-            <label class="form-check-label" for="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="rating" value="8" id="8" (change)="onRadioButtonChange(8)" />
+            <label class="form-check-label" for="8">
               <app-stars [rating]="8" />
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="rating" value="6" />
-            <label class="form-check-label" for="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="rating" value="6" id="6" (change)="onRadioButtonChange(6)" />
+            <label class="form-check-label" for="6">
               <app-stars [rating]="6" />
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="rating" value="4" />
-            <label class="form-check-label" for="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="rating" value="4" id="4" (change)="onRadioButtonChange(4)" />
+            <label class="form-check-label" for="4">
               <app-stars [rating]="4" />
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="rating" value="2" />
-            <label class="form-check-label" for="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="rating" value="2" id="2" (change)="onRadioButtonChange(2)" />
+            <label class="form-check-label" for="2">
               <app-stars [rating]="2" />
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="rating" value="0" />
-            <label class="form-check-label" for="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="rating" value="0" id="0" (change)="onRadioButtonChange(0)" />
+            <label class="form-check-label" for="0">
               <app-stars [rating]="0" />
             </label>
           </div>

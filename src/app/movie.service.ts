@@ -5,6 +5,7 @@ import MovieFormType from 'src/types/movie-form-type';
 import MovieType from 'src/types/movie-type';
 import MovieCardType from 'src/types/movie-card-type';
 import SpringPageType from 'src/types/vendor/spring-page-type';
+import MovieFilterType from 'src/types/movie-filter-type';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class MovieService {
 
   findAll() {
     return this.http.get<SpringPageType<MovieCardType>>((this.URL));
+  }
+
+  findAllFilter(filter: MovieFilterType) {
+    return this.http.get<SpringPageType<MovieCardType>>((`${this.URL}?title=${filter.title}&idGenre=${filter.idGenre}&rating=${filter.rating}`));
   }
 
   findById(id: number) {
