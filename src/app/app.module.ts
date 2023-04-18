@@ -36,6 +36,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { AdminMovieDetailsPageComponent } from './admin-movie-details-page/admin-movie-details-page.component';
 import { MovieCardLoaderComponent } from './movie-card-loader/movie-card-loader.component';
 import { AdminMovieCardLoaderComponent } from './admin-movie-card-loader/admin-movie-card-loader.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { PaginationLoaderComponent } from './pagination-loader/pagination-loader.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { AdminMovieCardLoaderComponent } from './admin-movie-card-loader/admin-m
     MovieDetailsComponent,
     AdminMovieDetailsPageComponent,
     MovieCardLoaderComponent,
-    AdminMovieCardLoaderComponent
+    AdminMovieCardLoaderComponent,
+    PaginationComponent,
+    PaginationLoaderComponent
   ],
   imports: [
     BrowserModule,

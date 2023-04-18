@@ -24,9 +24,9 @@ export class MovieService {
     title: '',
     idGenre: 0,
     rating: 0
-  }, page: number = 0) {
-    console.log(`${this.URL}?title=${filter.title}&idGenre=${filter.idGenre}&rating=${filter.rating}&page=${page}&size=2`)
-    return this.http.get<SpringPageType<MovieCardType>>((`${this.URL}?title=${filter.title}&idGenre=${filter.idGenre}&rating=${filter.rating}&page=${page}&size=2`));
+  }, page: number = 0, size: number = 2) {
+    console.log(`${this.URL}?title=${filter.title}&idGenre=${filter.idGenre}&rating=${filter.rating}&page=${page}&size=${size}`)
+    return this.http.get<SpringPageType<MovieCardType>>((`${this.URL}?title=${filter.title}&idGenre=${filter.idGenre}&rating=${filter.rating}&page=${page}&size=${size}`));
   }
 
   findById(id: number) {
