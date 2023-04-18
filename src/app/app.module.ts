@@ -33,6 +33,8 @@ import { GenreBannerComponent } from './genre-banner/genre-banner.component';
 import { GenresBannerContainerComponent } from './genres-banner-container/genres-banner-container.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { AdminMovieDetailsPageComponent } from './admin-movie-details-page/admin-movie-details-page.component';
+import { MovieCardLoaderComponent } from './movie-card-loader/movie-card-loader.component';
+import { AdminMovieCardLoaderComponent } from './admin-movie-card-loader/admin-movie-card-loader.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { AdminMovieDetailsPageComponent } from './admin-movie-details-page/admin
     GenreBannerComponent,
     GenresBannerContainerComponent,
     MovieDetailsComponent,
-    AdminMovieDetailsPageComponent
+    AdminMovieDetailsPageComponent,
+    MovieCardLoaderComponent,
+    AdminMovieCardLoaderComponent
   ],
   imports: [
     BrowserModule,

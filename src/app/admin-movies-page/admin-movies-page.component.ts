@@ -11,12 +11,17 @@ import MovieCardType from 'src/types/movie-card-type';
 export class AdminMoviesPageComponent implements OnInit {
 
   page: SpringPageType<MovieCardType> | undefined;
+  isLoading: boolean  = false;
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.movieService.findAll().subscribe({
-      next: (page) => this.page = page,
+      next: (page) => {
+        this.isLoading = false;
+        this.page = page
+      },
       error: (err) => console.error(err)
     });
   }

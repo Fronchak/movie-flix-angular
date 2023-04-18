@@ -12,13 +12,15 @@ import MovieFilterType from 'src/types/movie-filter-type';
 export class MoviesPageComponent implements OnInit {
 
   page: SpringPageType<MovieCardType> | undefined;
+  isLoading: boolean = false;
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.movieService.findAll().subscribe({
       next: (page) => {
-        console.log(page);
+        this.isLoading = false;
         this.page = page;
       },
       error: (err) => console.error(err)
@@ -26,9 +28,10 @@ export class MoviesPageComponent implements OnInit {
   }
 
   handleFilter(filter: MovieFilterType) {
-    this.movieService.findAllFilter(filter).subscribe({
+    this.isLoading = true;
+    this.movieService.findAll(filter).subscribe({
       next: (page) => {
-        console.log(page);
+        this.isLoading = false;
         this.page = page;
       },
       error: (err) => console.error(err)
