@@ -1,17 +1,67 @@
 <div class="auth-form-container">
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <h1>Create an account</h1>
     <div class="mb-3">
       <label class="form-label" for="email">Email</label>
-      <input class="form-control" type="email" id="email" placeholder="your-email@gmail.com" />
+      <input
+        class="form-control"
+        type="email"
+        id="email"
+        placeholder="your-email@gmail.com"
+        formControlName="email"
+        [ngClass]="{
+          'is-valid': fieldIsValid('email'),
+          'is-invalid': fieldIsInvalid('email')
+        }"
+      />
+      <div *ngIf="fieldIsInvalid('email')">
+        <div class="invalid-feedback d-block">
+          <span *ngIf="getServerError('email'); else client_error">{{ getServerError('email') }}</span>
+          <ng-template #client_error>
+            {{ form.get('email')?.errors?.['email'] ? 'Invalid email' : 'Email is required' }}
+          </ng-template>
+        </div>
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label" for="password">Password</label>
-      <input class="form-control" type="password" id="password" />
+      <input
+        class="form-control"
+        type="password"
+        id="password"
+        formControlName="password"
+        [ngClass]="{
+          'is-valid': fieldIsValid('password') && !getDifferentPasswordError(),
+          'is-invalid': fieldIsInvalid('password') || getDifferentPasswordError()
+        }"
+      />
+      <div *ngIf="fieldIsInvalid('password') || getDifferentPasswordError()">
+        <div class="invalid-feedback d-block">
+          {{ getServerError('password') ||
+          getDifferentPasswordError()
+          || "Password should have at least 6 letters" }}
+        </div>
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label" for="confirm-password">Confirm password</label>
-      <input class="form-control" type="password" id="confirm-password" />
+      <input
+        class="form-control"
+        type="password"
+        id="confirm-password"
+        formControlName="confirmPassword"
+        [ngClass]="{
+          'is-valid': fieldIsValid('confirmPassword') && !getDifferentPasswordError(),
+          'is-invalid': fieldIsInvalid('confirmPassword') || getDifferentPasswordError()
+        }"
+      />
+      <div *ngIf="fieldIsInvalid('confirmPassword') || getDifferentPasswordError()">
+        <div class="invalid-feedback d-block">
+          {{ getServerError('confirmPassword') ||
+          getDifferentPasswordError()
+          || "Confirm password should have at least 6 letters" }}
+        </div>
+      </div>
     </div>
     <div class="mb-3">
       <button type="submit" class="btn btn-primary w-100">Register</button>
