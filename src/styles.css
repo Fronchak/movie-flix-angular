@@ -7,6 +7,50 @@
   height: 200px;
 }
 
+/* Auth forms */
+
+.login-link {
+  background-color: #FFF;
+  color: #000;
+  padding: 5px 10px ;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.login-link:hover {
+  color: #000;
+  background-color: #CCC;
+}
+
+.auth-form-container {
+  border: 1px solid #CCC;
+  border-radius: 50px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+
+.auth-form-container form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.auth-form-container a {
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.auth-form-container a:hover {
+  text-decoration: underline;
+}
+
 /* TOASTS */
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 

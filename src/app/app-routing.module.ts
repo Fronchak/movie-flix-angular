@@ -12,6 +12,9 @@ import { UpdateGenrePageComponent } from './update-genre-page/update-genre-page.
 import { UpdateMoviePageComponent } from './update-movie-page/update-movie-page.component';
 import { MovieDetailsPageComponent } from './movie-details-page/movie-details-page.component';
 import { AdminMovieDetailsPageComponent } from './admin-movie-details-page/admin-movie-details-page.component';
+import { AuthPageComponent } from './auth-page/auth-page.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 const routes: Routes = [
   { path: "", component: HomePageComponent, pathMatch:"full" },
@@ -26,6 +29,11 @@ const routes: Routes = [
       { path: "genres", component: GenresPageComponent },
       { path: "genres/insert", component: InsertGenrePageComponent },
       { path: "genres/update/:id", component: UpdateGenrePageComponent }
+  ]},
+  { path: "auth", component: AuthPageComponent, children: [
+    { path: "", redirectTo: "login", pathMatch: 'full' },
+    { path: "register", component: RegisterFormComponent },
+    { path: "login", component: LoginFormComponent }
   ]},
   { path: "**", component: PageNotFoundComponent }
 ];

@@ -38,6 +38,9 @@ import { MovieCardLoaderComponent } from './movie-card-loader/movie-card-loader.
 import { AdminMovieCardLoaderComponent } from './admin-movie-card-loader/admin-movie-card-loader.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { PaginationLoaderComponent } from './pagination-loader/pagination-loader.component';
+import { AuthPageComponent } from './auth-page/auth-page.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,10 @@ import { PaginationLoaderComponent } from './pagination-loader/pagination-loader
     MovieCardLoaderComponent,
     AdminMovieCardLoaderComponent,
     PaginationComponent,
-    PaginationLoaderComponent
+    PaginationLoaderComponent,
+    AuthPageComponent,
+    RegisterFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
