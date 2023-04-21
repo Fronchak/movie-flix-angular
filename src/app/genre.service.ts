@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from '../utils/constantes';
 import GenreFormType from 'src/types/genre-form-type';
 import GenreType from 'src/types/genre-type';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,15 @@ export class GenreService {
 
   private URL = `${BASE_URL}/genres`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storageService: StorageService) { }
 
   save(genreForm: GenreFormType) {
-    return this.http.post<GenreType>(this.URL, genreForm)
+    const token = this.storageService.getAuthData();
+    return this.http.post<GenreType>(this.URL, genreForm, {
+      headers: {
+        Authorization: `Bearer ${token.token}`
+      }
+    })
   }
 
   findAll() {
@@ -22,14 +28,29 @@ export class GenreService {
   }
 
   findById(id: number) {
-    return this.http.get<GenreType>(`${this.URL}/${id}`);
+    const token = this.storageService.getAuthData();
+    return this.http.get<GenreType>(`${this.URL}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token.token}`
+      }
+    });
   }
 
   update(genreForm: GenreFormType, id: number) {
-    return this.http.put<GenreType>(`${this.URL}/${id}`, genreForm);
+    const token = this.storageService.getAuthData();
+    return this.http.put<GenreType>(`${this.URL}/${id}`, genreForm, {
+      headers: {
+        Authorization: `Bearer ${token.token}`
+      }
+    });
   }
 
   delete(id: number) {
-    return this.http.delete<void>(`${this.URL}/${id}`);
+    const token = this.storageService.getAuthData();
+    return this.http.delete<void>(`${this.URL}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token.token}`
+      }
+    });
   }
 }

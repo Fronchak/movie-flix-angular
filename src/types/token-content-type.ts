@@ -1,6 +1,9 @@
+import RoleType from "./role-type";
+
 type TokenContentType = {
-  email: string;
-  roles: Array<string>
+  exp: number,
+  sub: string;
+  roles: Array<RoleType>
 }
 
 export default TokenContentType;

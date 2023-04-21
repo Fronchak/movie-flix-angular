@@ -15,12 +15,20 @@ import { AdminMovieDetailsPageComponent } from './admin-movie-details-page/admin
 import { AuthPageComponent } from './auth-page/auth-page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { authenticatedGuard, rolesGuard } from 'src/utils/guards';
+import RoleType from 'src/types/role-type';
 
 const routes: Routes = [
   { path: "", component: HomePageComponent, pathMatch:"full" },
   { path: "movies", component: MoviesPageComponent },
-  { path: "movies/:id", component: MovieDetailsPageComponent },
-  { path: "admin", component: AdminPageComponent, children: [
+  { path: "movies/:id", component: MovieDetailsPageComponent, canActivate: [authenticatedGuard] },
+  { path: "admin",
+    component: AdminPageComponent,
+    canActivate: [authenticatedGuard, rolesGuard],
+    data: {
+      roles: ['ROLE_WORKER', 'ROLE_ADMIN']
+    },
+    children: [
       { path: "", redirectTo: "movies", pathMatch: "full" },
       { path: "movies", component: AdminMoviesPageComponent },
       { path: "movies/insert", component: InsertMoviePageComponent },

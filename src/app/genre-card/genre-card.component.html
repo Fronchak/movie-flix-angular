@@ -3,6 +3,6 @@
   <div class="card-body">
     <h4 class="card-title">{{ genre.name }}</h4>
     <a routerLink="update/{{ genre.id }}" class="btn btn-primary me-2">Edit</a>
-    <button (click)="onClick()" class="btn btn-danger">Delete</button>
+    <button *ngIf="tokenService.isAdmin()" (click)="onClick()" class="btn btn-danger">Delete</button>
   </div>
 </div>

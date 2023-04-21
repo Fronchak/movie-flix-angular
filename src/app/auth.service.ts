@@ -16,10 +16,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   register(registerForm: RegisterFormType) {
-    return this.http.post<TokenResponseType>(`${BASE_URL}/register`, registerForm);
+    return this.http.post<TokenResponseType>(`${this.URL}/register`, registerForm);
   }
 
   login(loginForm: LoginFormType) {
-    return this.http.post<TokenResponseType>(`${BASE_URL}/login`, loginForm);
+    return this.http.post<TokenResponseType>(`${this.URL}/login`, loginForm);
   }
 }

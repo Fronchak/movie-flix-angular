@@ -4,6 +4,7 @@ import { GenreService } from '../genre.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-genre-card',
@@ -15,9 +16,7 @@ export class GenreCardComponent {
   @Input() genre!: GenreType;
   @Output() onDelete = new EventEmitter<number>();
 
-  constructor(private genreService: GenreService,
-          private router: Router,
-          private toastr: ToastrService) {}
+  constructor(protected tokenService: TokenService) {}
 
   onClick() {
     if(window.confirm('Are you sure that you want to delete this genre ?')) {

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import MovieCardType from 'src/types/movie-card-type';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-admin-movie-card',
@@ -9,4 +10,6 @@ import MovieCardType from 'src/types/movie-card-type';
 export class AdminMovieCardComponent {
 
   @Input() movie!: MovieCardType;
+
+  constructor(protected tokenService: TokenService) {}
 }
