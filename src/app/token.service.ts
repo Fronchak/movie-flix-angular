@@ -14,9 +14,7 @@ export class TokenService {
   getTokenData(): TokenContentType | undefined {
     try {
       const token = this.storateService.getAuthData();
-      const decoded = jwtDecode(token.token) as TokenContentType;
-      console.log('decoded', decoded);
-      return decoded;
+      return jwtDecode(token.token) as TokenContentType;
     }
     catch(e) {
       return undefined;

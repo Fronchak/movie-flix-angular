@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import FieldErrorType from 'src/types/field-error-type';
 import { notBlankValidator } from 'src/utils/custom-validators';
 import InputFieldUtil from 'src/utils/input-field-util';
 import { AuthService } from '../auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { StorageService } from '../storage.service';
 
 @Component({
@@ -13,15 +13,21 @@ import { StorageService } from '../storage.service';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit {
 
   serverErrors: Array<FieldErrorType> = [];
   wasSubmited: boolean = false;
 
   constructor(private authService: AuthService,
             private router: Router,
+            private route: ActivatedRoute,
             private toastr: ToastrService,
             private storageService: StorageService) {}
+
+  ngOnInit(): void {
+    console.log(this.route.snapshot.queryParamMap);
+    console.log(this.route.snapshot.queryParamMap.get('redirectTo'));
+  }
 
   form = new FormGroup({
     email: new FormControl('', {
@@ -57,9 +63,14 @@ export class LoginFormComponent {
         password: values.password!
       }).subscribe({
         next: (token) => {
+          const data = this.route.snapshot.data;
+          const redirectTo = this.route.snapshot.queryParamMap.get('redirectTo') || '/movies';
+          console.log(this.route.snapshot.paramMap.get('redirectTo'));
+          console.log('data', data);
+          console.log('redirectTo', redirectTo)
           this.storageService.saveAuthData(token);
           this.toastr.success('Login with success');
-          this.router.navigate(['/movies']);
+          this.router.navigateByUrl(redirectTo);
         },
         error: (err) => {
           console.error(err);

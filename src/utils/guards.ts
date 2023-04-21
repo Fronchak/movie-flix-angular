@@ -6,7 +6,7 @@ import RoleType from "src/types/role-type";
 export const authenticatedGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot, state: RouterStateSnapshot
 ) => {
-  return inject(GuardService).isAuthenticated();
+  return inject(GuardService).isAuthenticated(state);
 }
 
 export const rolesGuard: CanActivateFn = (
